@@ -17452,10 +17452,12 @@ class AppContextValue {
         }
     }
     login($) {
+        var __player = $.player
+        __player.energy = 900000
         this._authToken = $.access_token,
             this._settings = $.settings,
             this._gameConf = new GameConf($.conf),
-            this._player = new PlayerModel(this._gameConf, $.player, $.bot_shares),
+            this._player = new PlayerModel(this._gameConf, __player, $.bot_shares),
             this._account = new AccountModel(this._gameConf, $.account),
             this._inviteLink = $.invite_url,
             this._debug_enabled = $.debug_enabled;
