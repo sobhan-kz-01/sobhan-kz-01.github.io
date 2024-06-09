@@ -8903,7 +8903,7 @@ function isTmaPlatform(...R) {
 }
 function isInTMA() {
     var R;
-    return true
+    return tmaPlatform !== "unknown" || !!((R = getWindow$1()) != null && R.TelegramWebviewProxy)
 }
 function sendExpand() {
     postEvent("web_app_expand", {})
