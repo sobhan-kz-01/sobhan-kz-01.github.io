@@ -9021,7 +9021,8 @@ function isDevice(R) {
     const $ = getWindow$1();
     if (!$)
         return R === "desktop";
-  
+    if (isTmaPlatform("weba"))
+        return !0;
     const W = $.innerWidth;
     switch (R) {
        
@@ -9039,7 +9040,8 @@ function media(R) {
         case "tablet":
             return `@media (max-width: ${maxWidth.tablet}px) (min-width: ${maxWidth.mobile}px)`;
         default:
-       
+        case "desktop":
+            return `@media (min-width: ${maxWidth.tablet}px)`
     }
 }
 const mediaTouch = "@media (hover: none)"
