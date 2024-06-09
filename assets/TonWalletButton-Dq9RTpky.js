@@ -8903,7 +8903,7 @@ function isTmaPlatform(...R) {
 }
 function isInTMA() {
     var R;
-    return false
+    return true
 }
 function sendExpand() {
     postEvent("web_app_expand", {})
