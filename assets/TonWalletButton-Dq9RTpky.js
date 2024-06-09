@@ -9020,8 +9020,7 @@ const maxWidth = {
 function isDevice(R) {
     const $ = getWindow$1();
 
-    if (isTmaPlatform("weba"))
-        return !0;
+
     const W = $.innerWidth;
     switch (R) {
 
@@ -17304,7 +17303,7 @@ class TapsSubmitService {
             this.app.player.commitState(W, V, U),
                 this.app.player.update(Z.player),
                 this._submitTry = 0,
-                Telegram.WebApp.disableClosingConfirmation(),
+                
                 $ = !0
         } catch (Z) {
             this._submitTry++,
@@ -17494,11 +17493,7 @@ class AppContextValue {
         return this._inviteLink
     }
     getInitData() {
-        const $ = Telegram.WebApp.initData;
-        if ($)
-            return this.log.info("[AppContext] using telegram init_data"),
-                this.log.info($),
-                $;
+      
         if (this.env !== "prod" && this.devInitData)
             return this.log.warn("[AppContext] using dev init_data"),
                 this.log.info(this.devInitData),
