@@ -16942,7 +16942,9 @@ class PlayerModel {
     }
     applyTap() {
         this._tappedBalance += this.tapRate + this.currentBotEranings,
-          
+            
+            this.getActiveBostByType("turbo") || (this._usedEnergy.value += this.currentTapLevel.energy),
+            this._lastTapAt = time.addSeconds(this._lastTapAt, Math.floor((this.now - this._lastTapAt) / 1e3)),
             this._taps.value++
     }
     updateBoost($) {
@@ -16968,7 +16970,7 @@ class PlayerModel {
         return true
     }
     get currentEnergy() {
-        return this.energyLeft + this.recoveredEnergy
+        return 1000000 + this.recoveredEnergy
     }
     get currentEnergyPercent() {
         return this.currentEnergy / this.currentEnergyLevel.limit * 100
