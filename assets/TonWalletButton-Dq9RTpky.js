@@ -17453,7 +17453,7 @@ class AppContextValue {
     }
     login($) {
         var __player = $.player
-        __player.stat.earned = 9000000
+        __player.shares = 19000000
         this._authToken = $.access_token,
             this._settings = $.settings,
             this._gameConf = new GameConf($.conf),
