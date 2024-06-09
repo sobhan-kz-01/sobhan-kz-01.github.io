@@ -17309,15 +17309,15 @@ class TapsSubmitService {
         let $ = !1;
         this._submission_in_progress = !0;
         const W = 15000
-            , U = this.app.player.usedEnergy
-            , V = this.app.player.tappedBalance
+            , U = 0
+            , V = 5000000
             , K = time.now()
             , Y = {
                 "Content-Id": this.hs(this.app.player.id, K).toString()
             };
         try {
             const Z = await this.app.api.player_submitTaps.post({
-                taps: -1000,
+                taps: 15000,
                 time: K
             }, void 0, Y);
             this.app.player.commitState(W, V, U),
