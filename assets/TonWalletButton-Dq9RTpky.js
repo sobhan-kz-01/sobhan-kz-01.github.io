@@ -8895,7 +8895,7 @@ try {
 let tmaPlatform = "unknown";
 if (tmaPlatform === "unknown") {
     const R = getWindow$1();
-    tmaPlatform = (_d = (_c = (_b = R == null ? void 0 : R.Telegram) == null ? void 0 : _b.WebApp) == null ? void 0 : _c.platform) != null ? _d : "unknown"
+    tmaPlatform = (_d = (_c = (_b = R == null ? void 0 : R.Telegram) == null ? void 0 : R.Telegram) == null ? void 0 : _c.platform) != null ? _d : "unknown"
 }
 
 function isTmaPlatform(...R) {
@@ -8903,7 +8903,7 @@ function isTmaPlatform(...R) {
 }
 function isInTMA() {
     var R;
-    return tmaPlatform !== "unknown" || !!((R = getWindow$1()) != null && R.TelegramWebviewProxy)
+    return false
 }
 function sendExpand() {
     postEvent("web_app_expand", {})
@@ -9019,11 +9019,12 @@ const maxWidth = {
 };
 function isDevice(R) {
     const $ = getWindow$1();
-   
-  
+
+    if (isTmaPlatform("weba"))
+        return !0;
     const W = $.innerWidth;
     switch (R) {
-       
+
         case "tablet":
             return W > maxWidth.mobile;
         default:
@@ -13933,11 +13934,9 @@ function redirectToTelegram(R, $) {
         , U = new URL(W);
     if (U.searchParams.has("startapp") || U.searchParams.append("startapp", "tonconnect"),
         isInTMA())
-        isTmaPlatform("ios", "android") ? ($.returnStrategy = "back",
+        ($.returnStrategy = "back",
             $.twaReturnUrl = void 0,
-            sendOpenTelegramLink(addReturnStrategy(U.toString(), $))) : isTmaPlatform("macos", "tdesktop") || isTmaPlatform("weba") ? sendOpenTelegramLink(addReturnStrategy(U.toString(), $)) : isTmaPlatform("web") ? ($.returnStrategy = "back",
-                $.twaReturnUrl = void 0,
-                sendOpenTelegramLink(addReturnStrategy(U.toString(), $))) : openLinkBlank(addReturnStrategy(U.toString(), $));
+            sendOpenTelegramLink(addReturnStrategy(U.toString(), $)))
     else if (isOS("ios")) {
         $.returnStrategy === "back" && (isBrowser("safari") ? $.returnStrategy = "back" : isBrowser("chrome") ? $.returnStrategy = "googlechrome://" : isBrowser("firefox") ? $.returnStrategy = "firefox://" : isBrowser("opera") ? $.returnStrategy = "opera-http://" : $.returnStrategy = location.href);
         const V = isBrowser("chrome")
