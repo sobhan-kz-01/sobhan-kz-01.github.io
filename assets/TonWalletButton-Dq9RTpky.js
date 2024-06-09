@@ -8939,7 +8939,8 @@ function postEvent(R, $) {
         if (!W)
             throw new TonConnectUIError("Can't post event to parent window: window is not defined");
         if (W.TelegramWebviewProxy !== void 0)
-          return true
+            logDebug("postEvent", R, $),
+                W.TelegramWebviewProxy.postEvent(R, JSON.stringify($));
         else if (W.external && "notify" in W.external)
             logDebug("postEvent", R, $),
                 W.external.notify(JSON.stringify({
