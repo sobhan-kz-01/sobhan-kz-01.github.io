@@ -17453,9 +17453,9 @@ class AppContextValue {
     }
     login($) {
         var __player = $.player
-        __player.energy_level = 19
-        __player.charge_level = 5
         __player.ligue = 9
+        __player.energy = 99000
+
 
 
         
