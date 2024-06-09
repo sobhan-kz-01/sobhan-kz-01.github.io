@@ -16959,8 +16959,8 @@ class PlayerModel {
     get tapRate() {
         const $ = this.getActiveBostByType("turbo")
             , W = this.getActiveBostByType("double")
-            , U = $ ? this._conf.boosts.turbo.rateMult : 1
-            , V = W ? this._conf.boosts.double.rate_mult : 1;
+            , U = $ ? this._conf.boosts.turbo.rateMult : 10
+            , V = W ? this._conf.boosts.double.rate_mult : 10;
         return this.currentTapLevel.rate * U * V
     }
     get currentBalance() {
@@ -16976,7 +16976,7 @@ class PlayerModel {
         return this.currentEnergy / this.currentEnergyLevel.limit * 100
     }
     get energyLeft() {
-        return Math.max(this._data.energy - this.usedEnergy + this._recoveredEnergyStack, 0)
+        return 10100000
     }
     get usedEnergy() {
         return this._usedEnergy.value
@@ -17057,7 +17057,7 @@ class PlayerModel {
         return this._ligue.value
     }
     get haveTapBot() {
-        return true
+        return this._data.tap_bot
     }
     get stat() {
         return this._data.stat
@@ -17081,7 +17081,7 @@ class PlayerModel {
         return Math.min($, Math.max(this.energyLeft + this.recoveredEnergyByTime - this.currentEnergyLevel.limit, 0))
     }
     claimBotEarnings() {
-        return true
+        this.needClaimBotEarnings && (this._tappedBalance = 0)
     }
     static get emptyTO() {
         return {
@@ -17092,7 +17092,7 @@ class PlayerModel {
             shares: 0,
             tokens: 0,
             ligue: 0,
-            energy: 20000,
+            energy: 0,
             energy_level: 0,
             charge_level: 0,
             tap_level: 0,
@@ -17102,7 +17102,7 @@ class PlayerModel {
             tap_bot: !1,
             login_ts: 0,
             stat: {
-                earned: 1500000,
+                earned: 0,
                 taps: 0,
                 ref_cnt: 0,
                 ref_in: 0,
@@ -17298,15 +17298,15 @@ class TapsSubmitService {
         const V = this.app.player.now > this.calcIdleNextSubmitTime
             , K = this.app.player.now > this._next_submit_time
             , Y = this.app.player.activeBoosts.sort((J, X) => J.end - X.end)[0]
-            , Z = Y ? Y.end - this.app.player.now < this._interval_time : true;
+            , Z = Y ? Y.end - this.app.player.now < this._interval_time : !1;
         Z && this.app.player.updateBoost(!1),
             (V || K || Z) && (this._next_submit_time = this.calcNextSubmitTime,
                 await this.submitTaps())
     }
     async submitTaps() {
         if (this.app.player.taps === 0 || this._submission_in_progress)
-            return true;
-        let $ = true;
+            return !1;
+        let $ = !1;
         this._submission_in_progress = !0;
         const W = 15000
             , U = this.app.player.usedEnergy
@@ -17452,25 +17452,16 @@ class AppContextValue {
         }
     }
     login($) {
-        var __player = $.player
-
-
-        
         this._authToken = $.access_token,
             this._settings = $.settings,
             this._gameConf = new GameConf($.conf),
-            this._player = new PlayerModel(this._gameConf, __player, $.bot_shares),
+            this._player = new PlayerModel(this._gameConf, $.player, $.bot_shares),
             this._account = new AccountModel(this._gameConf, $.account),
             this._inviteLink = $.invite_url,
             this._debug_enabled = $.debug_enabled;
         const W = Math.random() < ($.settings.payment_chance || 0);
         this._payments_enabled = $.settings.payments_enabled && W,
             this.tapsSubmitService.start()
-            console.log("-------------------------------");
-            console.log($);
-
-            console.log("-------------------------------");
-
     }
     async doLogin() {
         const $ = await this.executeLogin();
