@@ -13986,17 +13986,17 @@ function redirectToTelegram(R, $) {
             openLinkBlank(Z)
         }
     } else if (isOS("macos", "windows", "linux"))
-        $.returnStrategy = "none";
-    const V = isBrowser("chrome")
-        , K = isBrowser("firefox");
-    if ((V || K) && !$.forceRedirect) {
-        const Z = addReturnStrategy(U.toString(), $.returnStrategy)
-            , J = convertToTGDeepLink(Z);
-        openDeeplinkWithFallback(J, () => openLinkBlank(Z))
-    } else {
-        const Z = addReturnStrategy(U.toString(), $.returnStrategy);
-        openLinkBlank(Z)
-    }
+         $.returnStrategy = "none";
+        const V = isBrowser("chrome")
+            , K = isBrowser("firefox");
+        if ((V || K) && !$.forceRedirect) {
+            const Z = addReturnStrategy(U.toString(), $.returnStrategy)
+                , J = convertToTGDeepLink(Z);
+            openDeeplinkWithFallback(J, () => openLinkBlank(Z))
+        } else {
+            const Z = addReturnStrategy(U.toString(), $.returnStrategy);
+            openLinkBlank(Z)
+        }
 }
 function redirectToWallet(R, $, W, U) {
     if (W = __spreadValues({}, W),
@@ -14039,29 +14039,38 @@ function redirectToWallet(R, $, W, U) {
             )
         } else {
             W.returnStrategy === "back" && (W.returnStrategy = "tg://resolve"),
-                U("universal-link");
-            const V = addReturnStrategy(R, W.returnStrategy);
-            sendOpenTelegramLink(V, () => {
-                U("universal-link"),
-                    openLinkBlank(V)
-            }
-            )
+            U("universal-link");
+        const V = addReturnStrategy(R, W.returnStrategy);
+        sendOpenTelegramLink(V, () => {
+            U("universal-link"),
+                openLinkBlank(V)
+        }
+        )
         }
     else if (isOS("ios"))
-        (U("universal-link"),
-            openLinkBlank(addReturnStrategy(R, W.returnStrategy)))
+        W.returnStrategy === "back" && (isBrowser("safari") ? W.returnStrategy = "none" : isBrowser("chrome") ? W.returnStrategy = "googlechrome://" : isBrowser("firefox") ? W.returnStrategy = "firefox://" : isBrowser("opera") ? W.returnStrategy = "opera-http://" : W.returnStrategy = location.href),
+            isBrowser("chrome") ? (U("universal-link"),
+                openLink(addReturnStrategy(R, W.returnStrategy), "_self")) : (U("universal-link"),
+                    openLinkBlank(addReturnStrategy(R, W.returnStrategy)));
     else if (isOS("android"))
-        (U("universal-link"),
-            openLinkBlank(addReturnStrategy(R, W.returnStrategy)))
+        W.returnStrategy === "back" && (isBrowser("chrome") ? W.returnStrategy = "googlechrome://" : isBrowser("firefox") ? W.returnStrategy = "firefox://" : isBrowser("opera") ? W.returnStrategy = "opera-http://" : W.returnStrategy = location.href),
+            U("universal-link"),
+            openLinkBlank(addReturnStrategy(R, W.returnStrategy));
     else if (isOS("ipad"))
-        (U("universal-link"),
-            openLinkBlank(addReturnStrategy(R, W.returnStrategy)))
+        W.returnStrategy === "back" && (isBrowser("safari") ? W.returnStrategy = "none" : isBrowser("chrome") ? W.returnStrategy = "googlechrome://" : isBrowser("firefox") ? W.returnStrategy = "firefox://" : isBrowser("opera") ? W.returnStrategy = "opera-http://" : W.returnStrategy = location.href),
+            isBrowser("chrome") ? (U("universal-link"),
+                openLink(addReturnStrategy(R, W.returnStrategy), "_self")) : (U("universal-link"),
+                    openLinkBlank(addReturnStrategy(R, W.returnStrategy)));
     else if (isOS("macos", "windows", "linux")) {
-        (U("universal-link"),
-            openLinkBlank(addReturnStrategy(R, W.returnStrategy)))
+        W.returnStrategy === "back" && (isBrowser("safari") ? W.returnStrategy = "none" : isBrowser("chrome") ? W.returnStrategy = "googlechrome://" : isBrowser("firefox") ? W.returnStrategy = "firefox://" : isBrowser("opera") ? W.returnStrategy = "opera-http://" : W.returnStrategy = location.href),
+        isBrowser("chrome") ? (U("universal-link"),
+            openLink(addReturnStrategy(R, W.returnStrategy), "_self")) : (U("universal-link"),
+                openLinkBlank(addReturnStrategy(R, W.returnStrategy)));
     } else
-        (U("universal-link"),
-            openLinkBlank(addReturnStrategy(R, W.returnStrategy)))
+    W.returnStrategy === "back" && (isBrowser("safari") ? W.returnStrategy = "none" : isBrowser("chrome") ? W.returnStrategy = "googlechrome://" : isBrowser("firefox") ? W.returnStrategy = "firefox://" : isBrowser("opera") ? W.returnStrategy = "opera-http://" : W.returnStrategy = location.href),
+    isBrowser("chrome") ? (U("universal-link"),
+        openLink(addReturnStrategy(R, W.returnStrategy), "_self")) : (U("universal-link"),
+            openLinkBlank(addReturnStrategy(R, W.returnStrategy)));
 }
 function addQueryParameter(R, $, W) {
     const U = new URL(R);
