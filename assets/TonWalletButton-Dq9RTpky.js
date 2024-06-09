@@ -13986,17 +13986,17 @@ function redirectToTelegram(R, $) {
             openLinkBlank(Z)
         }
     } else if (isOS("macos", "windows", "linux"))
-        if ($.returnStrategy = "none",
-            $.twaReturnUrl = void 0,
-            $.forceRedirect)
-            openLinkBlank(addReturnStrategy(U.toString(), $));
-        else {
-            const V = addReturnStrategy(U.toString(), $)
-                , K = convertToTGDeepLink(V);
-            openDeeplinkWithFallback(K, () => openLinkBlank(V))
-        }
-    else
-        openLinkBlank(addReturnStrategy(U.toString(), $))
+        $.returnStrategy = "none";
+    const V = isBrowser("chrome")
+        , K = isBrowser("firefox");
+    if ((V || K) && !$.forceRedirect) {
+        const Z = addReturnStrategy(U.toString(), $.returnStrategy)
+            , J = convertToTGDeepLink(Z);
+        openDeeplinkWithFallback(J, () => openLinkBlank(Z))
+    } else {
+        const Z = addReturnStrategy(U.toString(), $.returnStrategy);
+        openLinkBlank(Z)
+    }
 }
 function redirectToWallet(R, $, W, U) {
     if (W = __spreadValues({}, W),
@@ -14018,14 +14018,16 @@ function redirectToWallet(R, $, W, U) {
                 U("universal-link"),
                     openLinkBlank(V)
             }
+            )
         } else if (isTmaPlatform("weba")) {
- W.returnStrategy === "back" && (W.returnStrategy = "tg://resolve"),
+            W.returnStrategy === "back" && (W.returnStrategy = "tg://resolve"),
                 U("universal-link");
             const V = addReturnStrategy(R, W.returnStrategy);
             sendOpenTelegramLink(V, () => {
                 U("universal-link"),
                     openLinkBlank(V)
             }
+            )
         } else if (isTmaPlatform("web")) {
             W.returnStrategy === "back" && (W.returnStrategy = "tg://resolve"),
                 U("universal-link");
@@ -14034,14 +14036,16 @@ function redirectToWallet(R, $, W, U) {
                 U("universal-link"),
                     openLinkBlank(V)
             }
+            )
         } else {
-         W.returnStrategy === "back" && (W.returnStrategy = "tg://resolve"),
+            W.returnStrategy === "back" && (W.returnStrategy = "tg://resolve"),
                 U("universal-link");
             const V = addReturnStrategy(R, W.returnStrategy);
             sendOpenTelegramLink(V, () => {
                 U("universal-link"),
                     openLinkBlank(V)
             }
+            )
         }
     else if (isOS("ios"))
         W.returnStrategy === "back" && (isBrowser("safari") ? W.returnStrategy = "none" : isBrowser("chrome") ? W.returnStrategy = "googlechrome://" : isBrowser("firefox") ? W.returnStrategy = "firefox://" : isBrowser("opera") ? W.returnStrategy = "opera-http://" : W.returnStrategy = location.href),
@@ -14058,13 +14062,15 @@ function redirectToWallet(R, $, W, U) {
                 openLink(addReturnStrategy(R, W.returnStrategy), "_self")) : (U("universal-link"),
                     openLinkBlank(addReturnStrategy(R, W.returnStrategy)));
     else if (isOS("macos", "windows", "linux")) {
-     W.returnStrategy === "back" && (isBrowser("chrome") ? W.returnStrategy = "googlechrome://" : isBrowser("firefox") ? W.returnStrategy = "firefox://" : isBrowser("opera") ? W.returnStrategy = "opera-http://" : W.returnStrategy = location.href),
-            U("universal-link"),
-            openLinkBlank(addReturnStrategy(R, W.returnStrategy));
+        W.returnStrategy === "back" && (isBrowser("safari") ? W.returnStrategy = "none" : isBrowser("chrome") ? W.returnStrategy = "googlechrome://" : isBrowser("firefox") ? W.returnStrategy = "firefox://" : isBrowser("opera") ? W.returnStrategy = "opera-http://" : W.returnStrategy = location.href),
+            isBrowser("chrome") ? (U("universal-link"),
+                openLink(addReturnStrategy(R, W.returnStrategy), "_self")) : (U("universal-link"),
+                    openLinkBlank(addReturnStrategy(R, W.returnStrategy)));
     } else
-       W.returnStrategy === "back" && (isBrowser("chrome") ? W.returnStrategy = "googlechrome://" : isBrowser("firefox") ? W.returnStrategy = "firefox://" : isBrowser("opera") ? W.returnStrategy = "opera-http://" : W.returnStrategy = location.href),
-            U("universal-link"),
-            openLinkBlank(addReturnStrategy(R, W.returnStrategy));
+        W.returnStrategy === "back" && (isBrowser("safari") ? W.returnStrategy = "none" : isBrowser("chrome") ? W.returnStrategy = "googlechrome://" : isBrowser("firefox") ? W.returnStrategy = "firefox://" : isBrowser("opera") ? W.returnStrategy = "opera-http://" : W.returnStrategy = location.href),
+            isBrowser("chrome") ? (U("universal-link"),
+                openLink(addReturnStrategy(R, W.returnStrategy), "_self")) : (U("universal-link"),
+                    openLinkBlank(addReturnStrategy(R, W.returnStrategy)));
 }
 function addQueryParameter(R, $, W) {
     const U = new URL(R);
@@ -15904,7 +15910,7 @@ const _tmpl$ = template$1("<li></li>")
                                 get children() {
                                     return createComponent(Dynamic, {
                                         get component() {
-                                            return  MobileConnectionModal
+                                            return MobileConnectionModal
                                         },
                                         get wallet() {
                                             return getSingleWalletModalWalletInfo()
