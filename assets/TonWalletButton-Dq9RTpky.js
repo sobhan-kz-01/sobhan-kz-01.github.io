@@ -16970,13 +16970,13 @@ class PlayerModel {
         return true
     }
     get currentEnergy() {
-        return 20000 + this.recoveredEnergy
+        return this.energyLeft + this.recoveredEnergy
     }
     get currentEnergyPercent() {
         return this.currentEnergy / this.currentEnergyLevel.limit * 100
     }
     get energyLeft() {
-        return 100000
+        return Math.max(this._data.energy - this.usedEnergy + this._recoveredEnergyStack, 0)
     }
     get usedEnergy() {
         return this._usedEnergy.value
