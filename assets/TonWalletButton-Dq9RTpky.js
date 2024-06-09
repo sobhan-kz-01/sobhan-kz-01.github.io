@@ -16967,7 +16967,7 @@ class PlayerModel {
         return this.shares + this._tappedBalance + this.currentBotEranings
     }
     get canTap() {
-        return this.currentEnergy >= this.currentTapLevel.energy && !this.needClaimBotEarnings
+        return true
     }
     get currentEnergy() {
         return this.energyLeft + this.recoveredEnergy
