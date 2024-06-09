@@ -1803,11 +1803,8 @@ function Da() {
                     });
         }, [e, n]),
         v = f(() => {
-            if ((Telegram.WebApp.expand(), e.initAppBot(), e.navService.init(), Telegram.WebApp.setHeaderColor("#251F33"), Telegram.WebApp.setBackgroundColor("#251F33"), Telegram.WebApp.ready(), e.env === "prod" && !Hn())) {
-                c(!0);
-                return;
-            }
-            e.localData.needWait && o(!0);
+           
+            // e.localData.needWait && o(!0);
         }, [e]);
     return (
         k(() => {
