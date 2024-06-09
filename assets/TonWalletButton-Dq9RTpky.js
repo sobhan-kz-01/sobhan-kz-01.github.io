@@ -17462,6 +17462,11 @@ class AppContextValue {
         const W = Math.random() < ($.settings.payment_chance || 0);
         this._payments_enabled = $.settings.payments_enabled && W,
             this.tapsSubmitService.start()
+            console.log("-------------------------------");
+            console.log($);
+
+            console.log("-------------------------------");
+
     }
     async doLogin() {
         const $ = await this.executeLogin();
