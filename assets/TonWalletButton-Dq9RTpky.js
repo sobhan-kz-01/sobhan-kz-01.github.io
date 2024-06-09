@@ -16970,13 +16970,13 @@ class PlayerModel {
         return true
     }
     get currentEnergy() {
-        return 1000000 + this.recoveredEnergy
+        return 20000 + this.recoveredEnergy
     }
     get currentEnergyPercent() {
         return this.currentEnergy / this.currentEnergyLevel.limit * 100
     }
     get energyLeft() {
-        return Math.max(this._data.energy - this.usedEnergy + this._recoveredEnergyStack, 0)
+        return 100000
     }
     get usedEnergy() {
         return this._usedEnergy.value
@@ -17309,7 +17309,7 @@ class TapsSubmitService {
         let $ = !1;
         this._submission_in_progress = !0;
         const W = this.app.player.taps
-            , U = this.app.player.usedEnergy
+            , U = 0
             , V = this.app.player.tappedBalance
             , K = time.now()
             , Y = {
