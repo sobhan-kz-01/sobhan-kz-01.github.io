@@ -8893,13 +8893,10 @@ try {
     initParams = urlParseHashParams(R)
 } catch { }
 let tmaPlatform = "unknown";
-initParams != null && initParams.tgWebAppPlatform && (tmaPlatform = (_a = initParams.tgWebAppPlatform) != null ? _a : "unknown");
 if (tmaPlatform === "unknown") {
     const R = getWindow$1();
     tmaPlatform = (_d = (_c = (_b = R == null ? void 0 : R.Telegram) == null ? void 0 : _b.WebApp) == null ? void 0 : _c.platform) != null ? _d : "unknown"
 }
-let webAppVersion = "6.0";
-initParams != null && initParams.tgWebAppVersion && (webAppVersion = initParams.tgWebAppVersion);
 if (!webAppVersion) {
     const R = getWindow$1();
     webAppVersion = (_g = (_f = (_e = R == null ? void 0 : R.Telegram) == null ? void 0 : _e.WebApp) == null ? void 0 : _f.version) != null ? _g : "6.0"
