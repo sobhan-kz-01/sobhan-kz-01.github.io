@@ -9020,7 +9020,8 @@ const maxWidth = {
 function isDevice(R) {
     const $ = getWindow$1();
 
-
+    if (isTmaPlatform("weba"))
+        return !0;
     const W = $.innerWidth;
     switch (R) {
 
