@@ -9019,12 +9019,12 @@ const maxWidth = {
 };
 function isDevice(R) {
     const $ = getWindow$1();
-
+   
     if (isTmaPlatform("weba"))
         return !0;
     const W = $.innerWidth;
     switch (R) {
-
+       
         case "tablet":
             return W > maxWidth.mobile;
         default:
@@ -13934,9 +13934,11 @@ function redirectToTelegram(R, $) {
         , U = new URL(W);
     if (U.searchParams.has("startapp") || U.searchParams.append("startapp", "tonconnect"),
         isInTMA())
-        ($.returnStrategy = "back",
+        isTmaPlatform("ios", "android") ? ($.returnStrategy = "back",
             $.twaReturnUrl = void 0,
-            sendOpenTelegramLink(addReturnStrategy(U.toString(), $)))
+            sendOpenTelegramLink(addReturnStrategy(U.toString(), $))) : isTmaPlatform("macos", "tdesktop") || isTmaPlatform("weba") ? sendOpenTelegramLink(addReturnStrategy(U.toString(), $)) : isTmaPlatform("web") ? ($.returnStrategy = "back",
+                $.twaReturnUrl = void 0,
+                sendOpenTelegramLink(addReturnStrategy(U.toString(), $))) : openLinkBlank(addReturnStrategy(U.toString(), $));
     else if (isOS("ios")) {
         $.returnStrategy === "back" && (isBrowser("safari") ? $.returnStrategy = "back" : isBrowser("chrome") ? $.returnStrategy = "googlechrome://" : isBrowser("firefox") ? $.returnStrategy = "firefox://" : isBrowser("opera") ? $.returnStrategy = "opera-http://" : $.returnStrategy = location.href);
         const V = isBrowser("chrome")
