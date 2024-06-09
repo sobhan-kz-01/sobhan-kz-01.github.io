@@ -17004,7 +17004,7 @@ class PlayerModel {
         return this._conf.getChargeLevel(this.chargeLevel)
     }
     get chargeLevel() {
-        return 10
+        return this._data.charge_level
     }
     get currentEnergyLevel() {
         return this._conf.getEnergyLevel(this.energyLevel)
