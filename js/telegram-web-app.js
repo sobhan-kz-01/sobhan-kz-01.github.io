@@ -203,7 +203,7 @@
       if (!url.match(/^(web\+)?tgb?:\/\/./)) {
         return false;
       }
-      var useIframe =  true ;
+      var useIframe = navigator.userAgent.match(/iOS|iPhone OS|iPhone|iPod|iPad/i) ? true : false;
       if (useIframe) {
         var iframeContEl = document.getElementById('tgme_frame_cont') || document.body;
         var iframeEl = document.createElement('iframe');
@@ -268,7 +268,7 @@
     };
   
     // For Windows Phone app
-  
+    window.TelegramGameProxy_receiveEvent = receiveEvent;
   
     // App backward compatibility
     window.TelegramGameProxy = {
@@ -279,7 +279,7 @@
   // WebApp
   (function () {
     var Utils = window.Telegram.Utils;
-    var WebView = window.Telegram.WebView;
+    var WebView = false;
     var initParams = WebView.initParams;
     var isIframe = WebView.isIframe;
   

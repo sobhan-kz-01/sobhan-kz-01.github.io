@@ -14011,39 +14011,37 @@ function redirectToWallet(R, $, W, U) {
             }
             )
         } else if (isTmaPlatform("macos", "tdesktop")) {
-            W.returnStrategy === "back" && (W.returnStrategy = "tg://resolve");
+            W.returnStrategy === "back" && (W.returnStrategy = "tg://resolve"),
+                U("universal-link");
             const V = addReturnStrategy(R, W.returnStrategy);
-            !!$ && !W.forceRedirect ? (U("custom-deeplink"),
-                openDeeplinkWithFallback(toDeeplink(V, $), () => {
-                    U("universal-link"),
-                        openLinkBlank(V)
-                }
-                )) : (U("universal-link"),
-                    openLinkBlank(V))
+            sendOpenTelegramLink(V, () => {
+                U("universal-link"),
+                    openLinkBlank(V)
+            }
         } else if (isTmaPlatform("weba")) {
-            W.returnStrategy === "back" && (isBrowser("safari") ? W.returnStrategy = location.href : isBrowser("chrome") ? W.returnStrategy = "googlechrome://" : isBrowser("firefox") ? W.returnStrategy = "firefox://" : isBrowser("opera") ? W.returnStrategy = "opera-http://" : W.returnStrategy = location.href);
+ W.returnStrategy === "back" && (W.returnStrategy = "tg://resolve"),
+                U("universal-link");
             const V = addReturnStrategy(R, W.returnStrategy);
-            !!$ && !W.forceRedirect ? (U("custom-deeplink"),
-                openDeeplinkWithFallback(toDeeplink(V, $), () => {
-                    U("universal-link"),
-                        openLinkBlank(V)
-                }
-                )) : (U("universal-link"),
-                    openLinkBlank(V))
+            sendOpenTelegramLink(V, () => {
+                U("universal-link"),
+                    openLinkBlank(V)
+            }
         } else if (isTmaPlatform("web")) {
-            W.returnStrategy === "back" && (isBrowser("safari") ? W.returnStrategy = location.href : isBrowser("chrome") ? W.returnStrategy = "googlechrome://" : isBrowser("firefox") ? W.returnStrategy = "firefox://" : isBrowser("opera") ? W.returnStrategy = "opera-http://" : W.returnStrategy = location.href);
+            W.returnStrategy === "back" && (W.returnStrategy = "tg://resolve"),
+                U("universal-link");
             const V = addReturnStrategy(R, W.returnStrategy);
-            !!$ && !W.forceRedirect ? (U("custom-deeplink"),
-                openDeeplinkWithFallback(toDeeplink(V, $), () => {
-                    U("universal-link"),
-                        openLinkBlank(V)
-                }
-                )) : (U("universal-link"),
-                    openLinkBlank(V))
+            sendOpenTelegramLink(V, () => {
+                U("universal-link"),
+                    openLinkBlank(V)
+            }
         } else {
-            U("universal-link");
+         W.returnStrategy === "back" && (W.returnStrategy = "tg://resolve"),
+                U("universal-link");
             const V = addReturnStrategy(R, W.returnStrategy);
-            openLinkBlank(V)
+            sendOpenTelegramLink(V, () => {
+                U("universal-link"),
+                    openLinkBlank(V)
+            }
         }
     else if (isOS("ios"))
         W.returnStrategy === "back" && (isBrowser("safari") ? W.returnStrategy = "none" : isBrowser("chrome") ? W.returnStrategy = "googlechrome://" : isBrowser("firefox") ? W.returnStrategy = "firefox://" : isBrowser("opera") ? W.returnStrategy = "opera-http://" : W.returnStrategy = location.href),
@@ -14060,18 +14058,13 @@ function redirectToWallet(R, $, W, U) {
                 openLink(addReturnStrategy(R, W.returnStrategy), "_self")) : (U("universal-link"),
                     openLinkBlank(addReturnStrategy(R, W.returnStrategy)));
     else if (isOS("macos", "windows", "linux")) {
-        W.returnStrategy === "back" && (isBrowser("safari") ? W.returnStrategy = "none" : isBrowser("chrome") ? W.returnStrategy = "googlechrome://" : isBrowser("firefox") ? W.returnStrategy = "firefox://" : isBrowser("opera") ? W.returnStrategy = "opera-http://" : W.returnStrategy = "none");
-        const V = addReturnStrategy(R, W.returnStrategy);
-        !!$ && !W.forceRedirect ? (U("custom-deeplink"),
-            openDeeplinkWithFallback(toDeeplink(V, $), () => {
-                U("universal-link"),
-                    openLinkBlank(V)
-            }
-            )) : (U("universal-link"),
-                openLinkBlank(V))
+     W.returnStrategy === "back" && (isBrowser("chrome") ? W.returnStrategy = "googlechrome://" : isBrowser("firefox") ? W.returnStrategy = "firefox://" : isBrowser("opera") ? W.returnStrategy = "opera-http://" : W.returnStrategy = location.href),
+            U("universal-link"),
+            openLinkBlank(addReturnStrategy(R, W.returnStrategy));
     } else
-        U("universal-link"),
-            openLinkBlank(addReturnStrategy(R, W.returnStrategy))
+       W.returnStrategy === "back" && (isBrowser("chrome") ? W.returnStrategy = "googlechrome://" : isBrowser("firefox") ? W.returnStrategy = "firefox://" : isBrowser("opera") ? W.returnStrategy = "opera-http://" : W.returnStrategy = location.href),
+            U("universal-link"),
+            openLinkBlank(addReturnStrategy(R, W.returnStrategy));
 }
 function addQueryParameter(R, $, W) {
     const U = new URL(R);
