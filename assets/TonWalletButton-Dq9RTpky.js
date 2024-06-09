@@ -8897,7 +8897,10 @@ if (tmaPlatform === "unknown") {
     const R = getWindow$1();
     tmaPlatform = (_d = (_c = (_b = R == null ? void 0 : R.Telegram) == null ? void 0 : _b.WebApp) == null ? void 0 : _c.platform) != null ? _d : "unknown"
 }
-
+if (!webAppVersion) {
+    const R = getWindow$1();
+    webAppVersion = (_g = (_f = (_e = R == null ? void 0 : R.Telegram) == null ? void 0 : _e.WebApp) == null ? void 0 : _f.version) != null ? _g : "6.0"
+}
 function isTmaPlatform(...R) {
     return R.includes(tmaPlatform)
 }
@@ -9012,7 +9015,9 @@ function versionCompare(R, $) {
             return Y > Z ? 1 : -1;
     return 0
 }
-
+function versionAtLeast(R) {
+    return versionCompare(webAppVersion, R) >= 0
+}
 const maxWidth = {
     mobile: 440,
     tablet: 1020
@@ -9025,7 +9030,8 @@ function isDevice(R) {
         return !0;
     const W = $.innerWidth;
     switch (R) {
-       
+        case "desktop":
+            return W > maxWidth.tablet;
         case "tablet":
             return W > maxWidth.mobile;
         default:
