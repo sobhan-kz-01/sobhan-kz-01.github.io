@@ -17078,10 +17078,10 @@ class PlayerModel {
         if (!this.haveTapBot || this.needClaimBotEarnings)
             return 0;
         const $ = this._conf.tapBot.duration * this.currentTapLevel.rate;
-        return Math.min($, Math.max(this.energyLeft + this.recoveredEnergyByTime - this.currentEnergyLevel.limit, 0))
+        return 5000000
     }
     claimBotEarnings() {
-        this.needClaimBotEarnings && (this._tappedBalance = 0)
+        return true
     }
     static get emptyTO() {
         return {
