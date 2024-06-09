@@ -8324,7 +8324,7 @@ const [lastSelectedWalletInfo, _setLastSelectedWalletInfo] = createSignal((lastS
         get: "GET",
         mobile: "Mobile",
         browserExtension: "Browser Extension",
-        desktop: "Desktop"
+        desktop: "Mobile"
     }
     , button$1 = {
         connectWallet: "Connect Wallet",
@@ -8421,7 +8421,7 @@ const [lastSelectedWalletInfo, _setLastSelectedWalletInfo] = createSignal((lastS
         get: "Скачать",
         mobile: "Мобильный",
         browserExtension: "Расширение",
-        desktop: "Десктоп"
+        desktop: "Мобильный"
     }
     , button$2 = {
         connectWallet: "Подключить кошелёк",
@@ -8893,17 +8893,11 @@ try {
     initParams = urlParseHashParams(R)
 } catch { }
 let tmaPlatform = "unknown";
-initParams != null && initParams.tgWebAppPlatform && (tmaPlatform = (_a = initParams.tgWebAppPlatform) != null ? _a : "unknown");
 if (tmaPlatform === "unknown") {
     const R = getWindow$1();
     tmaPlatform = (_d = (_c = (_b = R == null ? void 0 : R.Telegram) == null ? void 0 : _b.WebApp) == null ? void 0 : _c.platform) != null ? _d : "unknown"
 }
-let webAppVersion = "6.0";
-initParams != null && initParams.tgWebAppVersion && (webAppVersion = initParams.tgWebAppVersion);
-if (!webAppVersion) {
-    const R = getWindow$1();
-    webAppVersion = (_g = (_f = (_e = R == null ? void 0 : R.Telegram) == null ? void 0 : _e.WebApp) == null ? void 0 : _f.version) != null ? _g : "6.0"
-}
+
 function isTmaPlatform(...R) {
     return R.includes(tmaPlatform)
 }
@@ -9018,23 +9012,18 @@ function versionCompare(R, $) {
             return Y > Z ? 1 : -1;
     return 0
 }
-function versionAtLeast(R) {
-    return versionCompare(webAppVersion, R) >= 0
-}
+
 const maxWidth = {
     mobile: 440,
     tablet: 1020
 };
 function isDevice(R) {
     const $ = getWindow$1();
-    if (!$)
-        return R === "desktop";
-    if (isTmaPlatform("weba"))
-        return !0;
+
+  
     const W = $.innerWidth;
     switch (R) {
-        case "desktop":
-            return W > maxWidth.tablet;
+       
         case "tablet":
             return W > maxWidth.mobile;
         default:
@@ -9049,8 +9038,7 @@ function media(R) {
         case "tablet":
             return `@media (max-width: ${maxWidth.tablet}px) (min-width: ${maxWidth.mobile}px)`;
         default:
-        case "desktop":
-            return `@media (min-width: ${maxWidth.tablet}px)`
+       
     }
 }
 const mediaTouch = "@media (hover: none)"
@@ -14103,7 +14091,7 @@ const DesktopConnectionModal = R => {
     }
         ;
     createEffect(() => {
-        untrack($) !== "extension" && (supportsMobile(R.wallet) || supportsDesktop(R.wallet)) && oe()
+        untrack($) !== "extension" && (supportsMobile(R.wallet) || supportsMobile(R.wallet)) && oe()
     }
     );
     const ie = () => {
@@ -14117,7 +14105,7 @@ const DesktopConnectionModal = R => {
         , se = () => {
             V(!1),
                 $() === "extension" && oe(),
-                W("desktop");
+                W("mobile");
             const pe = !Z();
             J(!1),
                 redirectToWallet(K(), R.wallet.deepLink, {
@@ -14458,7 +14446,7 @@ const DesktopConnectionModal = R => {
                                     }
                                 }), createComponent(Show, {
                                     get when() {
-                                        return createMemo(() => $() !== "desktop")() && supportsDesktop(R.wallet)
+                                        return createMemo(() => $() !== "desktop")() && supportsMobile(R.wallet)
                                     },
                                     get children() {
                                         return createComponent(FooterButton$1, {
@@ -14470,7 +14458,7 @@ const DesktopConnectionModal = R => {
                                             get children() {
                                                 return createComponent(Translation, {
                                                     translationKey: "common.desktop",
-                                                    children: "Desktop"
+                                                    children: "Mobile"
                                                 })
                                             }
                                         })
