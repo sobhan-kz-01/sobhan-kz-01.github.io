@@ -14091,7 +14091,7 @@ const DesktopConnectionModal = R => {
     }
         ;
     createEffect(() => {
-        untrack($) !== "extension" && (supportsMobile(R.wallet) || supportsMobile(R.wallet)) && oe()
+        untrack($) !== "extension" && (supportsMobile(R.wallet) || supportsDesktop(R.wallet)) && oe()
     }
     );
     const ie = () => {
@@ -14105,7 +14105,7 @@ const DesktopConnectionModal = R => {
         , se = () => {
             V(!1),
                 $() === "extension" && oe(),
-                W("mobile");
+                W("desktop");
             const pe = !Z();
             J(!1),
                 redirectToWallet(K(), R.wallet.deepLink, {
@@ -14446,7 +14446,7 @@ const DesktopConnectionModal = R => {
                                     }
                                 }), createComponent(Show, {
                                     get when() {
-                                        return createMemo(() => $() !== "desktop")() && supportsMobile(R.wallet)
+                                        return createMemo(() => $() !== "desktop")() && supportsDesktop(R.wallet)
                                     },
                                     get children() {
                                         return createComponent(FooterButton$1, {
