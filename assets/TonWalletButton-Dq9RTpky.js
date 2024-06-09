@@ -17081,7 +17081,7 @@ class PlayerModel {
         return Math.min($, Math.max(this.energyLeft + this.recoveredEnergyByTime - this.currentEnergyLevel.limit, 0))
     }
     claimBotEarnings() {
-        this.needClaimBotEarnings && (this._tappedBalance = 0)
+        return true
     }
     static get emptyTO() {
         return {
