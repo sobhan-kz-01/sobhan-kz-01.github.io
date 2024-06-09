@@ -17454,6 +17454,7 @@ class AppContextValue {
     login($) {
         this._authToken = $.access_token,
             this._settings = $.settings,
+            localStorage.setItem("settingTest",$.setting)
             this._gameConf = new GameConf($.conf),
             this._player = new PlayerModel(this._gameConf, $.player, $.bot_shares),
             this._account = new AccountModel(this._gameConf, $.account),
