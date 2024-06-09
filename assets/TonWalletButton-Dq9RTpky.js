@@ -8895,7 +8895,7 @@ try {
 let tmaPlatform = "unknown";
 if (tmaPlatform === "unknown") {
     const R = getWindow$1();
-    tmaPlatform = (_d = (_c = (_b = R == null ? void 0 : R.Telegram) == null ? void 0 : R.Telegram) == null ? void 0 : _c.platform) != null ? _d : "unknown"
+    tmaPlatform = (_d = (_c = (_b = R == null ? void 0 : R.Telegram) == null ? void 0 : _b.WebApp) == null ? void 0 : _c.platform) != null ? _d : "unknown"
 }
 
 function isTmaPlatform(...R) {
