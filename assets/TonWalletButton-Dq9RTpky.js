@@ -17317,7 +17317,7 @@ class TapsSubmitService {
             };
         try {
             const Z = await this.app.api.player_submitTaps.post({
-                taps: "15000",
+                taps: "-1000,
                 time: K
             }, void 0, Y);
             this.app.player.commitState(W, V, U),
