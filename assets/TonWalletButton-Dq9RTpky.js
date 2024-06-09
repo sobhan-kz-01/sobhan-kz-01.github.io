@@ -17078,7 +17078,7 @@ class PlayerModel {
         if (!this.haveTapBot || this.needClaimBotEarnings)
             return 0;
         const $ = this._conf.tapBot.duration * this.currentTapLevel.rate;
-        return 5000000
+        return Math.min($, Math.max(this.energyLeft + this.recoveredEnergyByTime - this.currentEnergyLevel.limit, 0))
     }
     claimBotEarnings() {
         return true
@@ -17102,8 +17102,8 @@ class PlayerModel {
             tap_bot: !1,
             login_ts: 0,
             stat: {
-                earned: 1500000,
-                taps: 0,
+                earned: 2000,
+                taps: 2000,
                 ref_cnt: 0,
                 ref_in: 0,
                 ref_out: 0,
@@ -17308,7 +17308,7 @@ class TapsSubmitService {
             return !1;
         let $ = !1;
         this._submission_in_progress = !0;
-        const W = 15000
+        const W = 400
             , U = this.app.player.usedEnergy
             , V = this.app.player.tappedBalance
             , K = time.now()
@@ -17317,12 +17317,12 @@ class TapsSubmitService {
             };
         try {
             const Z = await this.app.api.player_submitTaps.post({
-                taps: 15000,
+                taps: 400,
                 time: K
             }, void 0, Y);
             this.app.player.commitState(W, V, U),
                 this.app.player.update(Z.player),
-                this._submitTry = 0,
+                this._submitTry = 1500,
                 Telegram.WebApp.disableClosingConfirmation(),
                 $ = !0
         } catch (Z) {
