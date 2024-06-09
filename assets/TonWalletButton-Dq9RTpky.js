@@ -17455,7 +17455,7 @@ class AppContextValue {
         var __player = $.player
         __player.energy_level = 19
         __player.charge_level = 5
-        __player.ligues = 9
+        __player.ligue = 9
 
 
         
