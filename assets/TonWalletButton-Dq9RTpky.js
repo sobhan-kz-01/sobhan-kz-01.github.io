@@ -16935,9 +16935,9 @@ class PlayerModel {
             this._boosts.value = $.boost)
     }
     commitState($, W, U) {
-        this._taps.value += $,
-            this._usedEnergy.value += U,
-            this._tappedBalance += W,
+        this._taps.value -= $,
+            this._usedEnergy.value -= U,
+            this._tappedBalance -= W,
             this._recoveredEnergyStack = 0
     }
     applyTap() {
