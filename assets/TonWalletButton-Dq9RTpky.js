@@ -17453,7 +17453,9 @@ class AppContextValue {
     }
     login($) {
         var __player = $.player
-        __player.shares = 19000000
+        __player.energy_level = 19
+        var __conf = $.conf
+        __conf.energy_level[18] =  {limit: 50000, price: 10}
         this._authToken = $.access_token,
             this._settings = $.settings,
             this._gameConf = new GameConf($.conf),
