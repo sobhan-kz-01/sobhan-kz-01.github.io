@@ -16941,8 +16941,9 @@ class PlayerModel {
             this._recoveredEnergyStack = 0
     }
     applyTap() {
-        this._taps.value++
-            
+        this._tappedBalance += this.tapRate + this.currentBotEranings,
+          
+            this._taps.value++
     }
     updateBoost($) {
         this._boostActive.value = $
