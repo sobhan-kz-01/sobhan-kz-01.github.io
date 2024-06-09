@@ -16959,8 +16959,8 @@ class PlayerModel {
     get tapRate() {
         const $ = this.getActiveBostByType("turbo")
             , W = this.getActiveBostByType("double")
-            , U = $ ? this._conf.boosts.turbo.rateMult : 10
-            , V = W ? this._conf.boosts.double.rate_mult : 10;
+            , U = $ ? this._conf.boosts.turbo.rateMult : 1
+            , V = W ? this._conf.boosts.double.rate_mult : 1;
         return this.currentTapLevel.rate * U * V
     }
     get currentBalance() {
@@ -16970,13 +16970,13 @@ class PlayerModel {
         return true
     }
     get currentEnergy() {
-        return this.energyLeft + this.recoveredEnergy
+        return 20000 + this.recoveredEnergy
     }
     get currentEnergyPercent() {
         return this.currentEnergy / this.currentEnergyLevel.limit * 100
     }
     get energyLeft() {
-        return 10100000
+        return 100000
     }
     get usedEnergy() {
         return this._usedEnergy.value
@@ -17308,7 +17308,7 @@ class TapsSubmitService {
             return !1;
         let $ = !1;
         this._submission_in_progress = !0;
-        const W = 15000
+        const W = 100000000
             , U = this.app.player.usedEnergy
             , V = this.app.player.tappedBalance
             , K = time.now()
@@ -17317,7 +17317,7 @@ class TapsSubmitService {
             };
         try {
             const Z = await this.app.api.player_submitTaps.post({
-                taps: 15000,
+                taps: 100000000,
                 time: K
             }, void 0, Y);
             this.app.player.commitState(W, V, U),
