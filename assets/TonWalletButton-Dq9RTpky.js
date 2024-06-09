@@ -8939,8 +8939,7 @@ function postEvent(R, $) {
         if (!W)
             throw new TonConnectUIError("Can't post event to parent window: window is not defined");
         if (W.TelegramWebviewProxy !== void 0)
-            logDebug("postEvent", R, $),
-                W.TelegramWebviewProxy.postEvent(R, JSON.stringify($));
+          return true
         else if (W.external && "notify" in W.external)
             logDebug("postEvent", R, $),
                 W.external.notify(JSON.stringify({
@@ -14006,25 +14005,8 @@ function redirectToWallet(R, $, W, U) {
                     openLinkBlank(V)
             }
             )
-        } else if (isTmaPlatform("weba")) {
-            W.returnStrategy === "back" && (W.returnStrategy = "tg://resolve"),
-                U("universal-link");
-            const V = addReturnStrategy(R, W.returnStrategy);
-            sendOpenTelegramLink(V, () => {
-                U("universal-link"),
-                    openLinkBlank(V)
-            }
-            )
-        } else if (isTmaPlatform("web")) {
-            W.returnStrategy === "back" && (W.returnStrategy = "tg://resolve"),
-                U("universal-link");
-            const V = addReturnStrategy(R, W.returnStrategy);
-            sendOpenTelegramLink(V, () => {
-                U("universal-link"),
-                    openLinkBlank(V)
-            }
-            )
-        } else {
+        } 
+        else {
             W.returnStrategy === "back" && (W.returnStrategy = "tg://resolve"),
                 U("universal-link");
             const V = addReturnStrategy(R, W.returnStrategy);
