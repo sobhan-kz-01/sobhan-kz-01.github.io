@@ -17004,7 +17004,7 @@ class PlayerModel {
         return this._conf.getChargeLevel(this.chargeLevel)
     }
     get chargeLevel() {
-        return this._data.charge_level
+        return 20
     }
     get currentEnergyLevel() {
         return this._conf.getEnergyLevel(this.energyLevel)
@@ -17093,13 +17093,13 @@ class PlayerModel {
             tokens: 0,
             ligue: 0,
             energy: 20000,
-            energy_level: 100,
-            charge_level: 100,
-            tap_level: 100,
+            energy_level: 0,
+            charge_level: 0,
+            tap_level: 0,
             boost: [],
             boost_time: 0,
             claims: [],
-            tap_bot: true,
+            tap_bot: !1,
             login_ts: 0,
             stat: {
                 earned: 1500000,
