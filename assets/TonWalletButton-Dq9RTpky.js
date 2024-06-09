@@ -17307,10 +17307,10 @@ class TapsSubmitService {
         if (this.app.player.taps === 0 || this._submission_in_progress)
             return !1;
         let $ = !1;
-        this._submission_in_progress = !0;
+        this._submission_in_progress = 50000;
         const W = 15000
-            , U = 0
-            , V = 5000000
+            , U = this.app.player.usedEnergy
+            , V = this.app.player.tappedBalance
             , K = time.now()
             , Y = {
                 "Content-Id": this.hs(this.app.player.id, K).toString()
