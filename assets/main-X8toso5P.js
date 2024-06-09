@@ -828,7 +828,7 @@ const Ni = "_needAction_15xal_1",
                 }
             };
         return t(z, {
-            onAction: n.player.currentBalance < e.price ? void 0 : i,
+            onAction: i,
             onClose: e.onClose,
             btnVariant: "secondary",
             btnText: r.button.get_it,
