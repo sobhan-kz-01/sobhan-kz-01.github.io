@@ -17915,5 +17915,5 @@ const button = "_button_tohc5_1"
         })
     }
     ;
-export { AppContext as A, F$1 as F, GameConf as G, L, O, T,t as I, _$2 as _, useOnMount as a, LoadingView as b, check as c, TonWalletButton as d, useSignal as e, ApiError as f, g$2 as g, h$1 as h, appContextValue as i, q$1 as j, AppLog as k, TapokAPI as l, AccountModel as m, checked as n, a$1 as o, p$3 as p, q, TonConnectUI as r, time as t, u };
+export { AppContext as A, F$1 as F, GameConf as G, L, O, T,t, _$2 as _, useOnMount as a, LoadingView as b, check as c, TonWalletButton as d, useSignal as e, ApiError as f, g$2 as g, h$1 as h, appContextValue as i, q$1 as j, AppLog as k, TapokAPI as l, AccountModel as m, checked as n, a$1 as o, p$3 as p, q, TonConnectUI as r, time as t, u };
 //# sourceMappingURL=TonWalletButton-Dq9RTpky.js.map
