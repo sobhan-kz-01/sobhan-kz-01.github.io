@@ -17092,7 +17092,7 @@ class PlayerModel {
             shares: 0,
             tokens: 0,
             ligue: 0,
-            energy: 0,
+            energy: 20000,
             energy_level: 0,
             charge_level: 0,
             tap_level: 0,
@@ -17102,7 +17102,7 @@ class PlayerModel {
             tap_bot: !1,
             login_ts: 0,
             stat: {
-                earned: 0,
+                earned: 1500000,
                 taps: 0,
                 ref_cnt: 0,
                 ref_in: 0,
