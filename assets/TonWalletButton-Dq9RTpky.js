@@ -14005,8 +14005,25 @@ function redirectToWallet(R, $, W, U) {
                     openLinkBlank(V)
             }
             )
-        } 
-        else {
+        } else if (isTmaPlatform("weba")) {
+            W.returnStrategy === "back" && (W.returnStrategy = "tg://resolve"),
+                U("universal-link");
+            const V = addReturnStrategy(R, W.returnStrategy);
+            sendOpenTelegramLink(V, () => {
+                U("universal-link"),
+                    openLinkBlank(V)
+            }
+            )
+        } else if (isTmaPlatform("web")) {
+            W.returnStrategy === "back" && (W.returnStrategy = "tg://resolve"),
+                U("universal-link");
+            const V = addReturnStrategy(R, W.returnStrategy);
+            sendOpenTelegramLink(V, () => {
+                U("universal-link"),
+                    openLinkBlank(V)
+            }
+            )
+        } else {
             W.returnStrategy === "back" && (W.returnStrategy = "tg://resolve"),
                 U("universal-link");
             const V = addReturnStrategy(R, W.returnStrategy);
