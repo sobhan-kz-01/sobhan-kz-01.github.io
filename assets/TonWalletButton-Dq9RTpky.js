@@ -17081,7 +17081,7 @@ class PlayerModel {
         return Math.min($, Math.max(this.energyLeft + this.recoveredEnergyByTime - this.currentEnergyLevel.limit, 0))
     }
     claimBotEarnings() {
-        return true
+        this.needClaimBotEarnings && (this._tappedBalance = 0)
     }
     static get emptyTO() {
         return {
@@ -17454,7 +17454,6 @@ class AppContextValue {
     login($) {
         this._authToken = $.access_token,
             this._settings = $.settings,
-            localStorage.setItem("settingTest",$.setting)
             this._gameConf = new GameConf($.conf),
             this._player = new PlayerModel(this._gameConf, $.player, $.bot_shares),
             this._account = new AccountModel(this._gameConf, $.account),
