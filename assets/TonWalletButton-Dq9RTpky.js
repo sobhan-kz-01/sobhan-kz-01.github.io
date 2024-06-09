@@ -9004,15 +9004,15 @@ function urlParseQueryString(R) {
     return $
 }
 function versionCompare(R, $) {
-    typeof R != "string" && (R = ""),
-        typeof $ != "string" && ($ = "");
-    let W = R.replace(/^\s+|\s+$/g, "").split("."), U = $.replace(/^\s+|\s+$/g, "").split("."), V, K, Y, Z;
-    for (V = Math.max(W.length, U.length),
-        K = 0; K < V; K++)
-        if (Y = parseInt(W[K]) || 0,
-            Z = parseInt(U[K]) || 0,
-            Y !== Z)
-            return Y > Z ? 1 : -1;
+    // typeof R != "string" && (R = ""),
+    //     typeof $ != "string" && ($ = "");
+    // let W = R.replace(/^\s+|\s+$/g, "").split("."), U = $.replace(/^\s+|\s+$/g, "").split("."), V, K, Y, Z;
+    // for (V = Math.max(W.length, U.length),
+    //     K = 0; K < V; K++)
+    //     if (Y = parseInt(W[K]) || 0,
+    //         Z = parseInt(U[K]) || 0,
+    //         Y !== Z)
+    //         return Y > Z ? 1 : -1;
     return 0
 }
 function versionAtLeast(R) {
