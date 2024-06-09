@@ -17303,7 +17303,7 @@ class TapsSubmitService {
             this.app.player.commitState(W, V, U),
                 this.app.player.update(Z.player),
                 this._submitTry = 0,
-                
+                Telegram.WebApp.disableClosingConfirmation(),
                 $ = !0
         } catch (Z) {
             this._submitTry++,
