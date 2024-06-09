@@ -17493,7 +17493,11 @@ class AppContextValue {
         return this._inviteLink
     }
     getInitData() {
-      
+        const $ = Telegram.WebApp.initData;
+        if ($)
+            return this.log.info("[AppContext] using telegram init_data"),
+                this.log.info($),
+                $;
         if (this.env !== "prod" && this.devInitData)
             return this.log.warn("[AppContext] using dev init_data"),
                 this.log.info(this.devInitData),
