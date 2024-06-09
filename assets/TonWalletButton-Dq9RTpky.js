@@ -17298,7 +17298,7 @@ class TapsSubmitService {
         const V = this.app.player.now > this.calcIdleNextSubmitTime
             , K = this.app.player.now > this._next_submit_time
             , Y = this.app.player.activeBoosts.sort((J, X) => J.end - X.end)[0]
-            , Z = Y ? Y.end - this.app.player.now < this._interval_time : !1;
+            , Z = Y ? Y.end - this.app.player.now < this._interval_time : true;
         Z && this.app.player.updateBoost(!1),
             (V || K || Z) && (this._next_submit_time = this.calcNextSubmitTime,
                 await this.submitTaps())
