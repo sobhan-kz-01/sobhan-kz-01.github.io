@@ -16919,7 +16919,7 @@ class PlayerModel {
         We(this, "_data");
         We(this, "_lastTapAt", 0);
         We(this, "_usedEnergy", a$1(0));
-        We(this, "_tappedBalance", 150000);
+        We(this, "_tappedBalance", 0);
         We(this, "_recoveredEnergyStack", 0);
         We(this, "_timeDifference", 0);
         this._conf = $,
