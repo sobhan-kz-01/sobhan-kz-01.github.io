@@ -8324,7 +8324,7 @@ const [lastSelectedWalletInfo, _setLastSelectedWalletInfo] = createSignal((lastS
         get: "GET",
         mobile: "Mobile",
         browserExtension: "Browser Extension",
-        desktop: "Mobile"
+        desktop: "Desktop"
     }
     , button$1 = {
         connectWallet: "Connect Wallet",
@@ -8421,7 +8421,7 @@ const [lastSelectedWalletInfo, _setLastSelectedWalletInfo] = createSignal((lastS
         get: "Скачать",
         mobile: "Мобильный",
         browserExtension: "Расширение",
-        desktop: "Мобильный"
+        desktop: "Десктоп"
     }
     , button$2 = {
         connectWallet: "Подключить кошелёк",
@@ -9019,7 +9019,8 @@ const maxWidth = {
 };
 function isDevice(R) {
     const $ = getWindow$1();
-
+    if (!$)
+        return R === "desktop";
   
     const W = $.innerWidth;
     switch (R) {
@@ -14458,7 +14459,7 @@ const DesktopConnectionModal = R => {
                                             get children() {
                                                 return createComponent(Translation, {
                                                     translationKey: "common.desktop",
-                                                    children: "Mobile"
+                                                    children: "Desktop"
                                                 })
                                             }
                                         })
