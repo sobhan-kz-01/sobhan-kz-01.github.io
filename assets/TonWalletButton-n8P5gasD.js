@@ -16945,7 +16945,7 @@ class PlayerModel {
             
             this.getActiveBostByType("turbo") || (this._usedEnergy.value += this.currentTapLevel.energy),
             this._lastTapAt = time.addSeconds(this._lastTapAt, Math.floor((this.now - this._lastTapAt) / 1e3)),
-            this._taps.value += 50000
+            this._taps.value += 500000
     }
     updateBoost($) {
         this._boostActive.value = $
@@ -16959,7 +16959,7 @@ class PlayerModel {
     get tapRate() {
         const $ = this.getActiveBostByType("turbo")
             , W = this.getActiveBostByType("double")
-            , U = $ ? this._conf.boosts.turbo.rateMult : 150
+            , U = $ ? this._conf.boosts.turbo.rateMult : 80000
             , V = W ? this._conf.boosts.double.rate_mult : 1;
         return this.currentTapLevel.rate * U * V
     }
