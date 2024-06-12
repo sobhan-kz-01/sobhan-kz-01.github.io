@@ -17281,6 +17281,7 @@ class TapsSubmitService {
             await sleep(Math.min($, W))
         }
     }
+    
     async loop() {
         if (Date.parse(this.app.settings.start_date) >= this.app.player.now)
             return;
