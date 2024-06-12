@@ -408,10 +408,13 @@ const Gn = "_image_1yc2s_1",
         const n = p(u);
         return t(z, {
             onAction: async () => {
+                try {
                     await n.tapsSubmitService.submitTaps();
                     const o = await n.api.player_applyBoost.post({ type: e.type });
                     n.player.updateBoost(!0), n.player.update(o.player), n.notification.showInfo("Good!"), n.navService.setPage("taps");
-              
+                } catch (o) {
+                    n.log.error("player_applyBoost failed", o), n.notification.showError("Error!");
+                }
             },
             onClose: (o) => {
                 e.onClose(), o && n.navService.back();
