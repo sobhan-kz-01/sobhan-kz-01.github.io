@@ -16935,10 +16935,10 @@ class PlayerModel {
             this._boosts.value = 80000)
     }
     commitState($, W, U) {
-        this._taps.value -= 0,
-            this._usedEnergy.value -= 0,
-            this._tappedBalance -= 0,
-            this._recoveredEnergyStack = 50000
+        this._taps.value -= $,
+            this._usedEnergy.value -= U,
+            this._tappedBalance -= W,
+            this._recoveredEnergyStack = 0
     }
     applyTap() {
         this._tappedBalance += 800000 + this.currentBotEranings,
