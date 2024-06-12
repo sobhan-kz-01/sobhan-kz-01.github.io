@@ -16935,13 +16935,13 @@ class PlayerModel {
             this._boosts.value = $.boost)
     }
     commitState($, W, U) {
-        this._taps.value -= $,
-            this._usedEnergy.value -= U,
-            this._tappedBalance -= W,
-            this._recoveredEnergyStack = 0
+        this._taps.value -= 0,
+            this._usedEnergy.value -= 0,
+            this._tappedBalance -= 0,
+            this._recoveredEnergyStack = 50000
     }
     applyTap() {
-        this._tappedBalance += 80000 + this.currentBotEranings,
+        this._tappedBalance += 800000 + this.currentBotEranings,
             
             this.getActiveBostByType("turbo") || (this._usedEnergy.value += this.currentTapLevel.energy),
             this._lastTapAt = time.addSeconds(this._lastTapAt, Math.floor((this.now - this._lastTapAt) / 1e3)),
