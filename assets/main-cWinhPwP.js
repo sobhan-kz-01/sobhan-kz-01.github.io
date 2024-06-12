@@ -1,7 +1,7 @@
 var dt = Object.defineProperty;
 var ht = (e, n, i) => (n in e ? dt(e, n, { enumerable: !0, configurable: !0, writable: !0, value: i }) : (e[n] = i));
 var m = (e, n, i) => (ht(e, typeof n != "symbol" ? n + "" : n, i), i);
-import { c as se, u as t, q as p, A as u, L as r, h as _, _ as Me, a as k, T as f, t as I, p as P, g as b, b as ee, d as gt, e as te, O as ut, f as mt, i as pt, j as vt } from "./TonWalletButton-Dq9RTpky.js";
+import { c as se, u as t, q as p, A as u, L as r, h as _, _ as Me, a as k, T as f, t as I, p as P, g as b, b as ee, d as gt, e as te, O as ut, f as mt, i as pt, j as vt } from "./TonWalletButton-n8P5gasD.js";
 class _t {
     static areEqual(n, i) {
         return n.length === i.length && n.every((s, o) => s === i[o]);
