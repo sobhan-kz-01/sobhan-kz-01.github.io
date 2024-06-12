@@ -17040,7 +17040,7 @@ class PlayerModel {
         if ($ === "turbo" && !this._boostActive.value)
             return;
         const W = this.getBoostByType($);
-        if (W && W.end > this.now)
+        if (W && W.end < this.now)
             return W
     }
     get activeBoosts() {
