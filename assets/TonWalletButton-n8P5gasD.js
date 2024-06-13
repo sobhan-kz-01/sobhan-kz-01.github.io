@@ -16960,8 +16960,8 @@ class PlayerModel {
         const $ = this.getActiveBostByType("turbo")
             , W = this.getActiveBostByType("double")
             , U = $ ? this._conf.boosts.turbo.rateMult : 80000
-            , V = W ? this._conf.boosts.double.rate_mult : 1;
-        return this.currentTapLevel.rate * U * V
+            , V = W ? this._conf.boosts.double.rate_mult : 80000;
+        return 8000 * U * V
     }
     get currentBalance() {
         return this.shares + this._tappedBalance + this.currentBotEranings
