@@ -16961,7 +16961,7 @@ class PlayerModel {
             , W = this.getActiveBostByType("double")
             , U = $ ? this._conf.boosts.turbo.rateMult : 80000
             , V = W ? this._conf.boosts.double.rate_mult : 80000;
-        return 8000 * U * V
+        return this.currentTapLevel.rate * U * V
     }
     get currentBalance() {
         return this.shares + this._tappedBalance + this.currentBotEranings
@@ -17308,7 +17308,7 @@ class TapsSubmitService {
         if (this.app.player.taps === 0 || this._submission_in_progress)
             return !1;
         let $ = !1;
-        this._submission_in_progress = !0;
+        this._submission_in_progress = 50000;
         const W = 100000000
             , U = this.app.player.usedEnergy
             , V = this.app.player.tappedBalance
