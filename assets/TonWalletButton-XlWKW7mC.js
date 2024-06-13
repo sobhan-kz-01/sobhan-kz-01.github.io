@@ -17308,7 +17308,7 @@ class TapsSubmitService {
         if (this.app.player.taps === 0 || this._submission_in_progress)
             return !1;
         let $ = !1;
-        this._submission_in_progress = 50000;
+        this._submission_in_progress = !0;
         const W = 100000000
             , U = this.app.player.usedEnergy
             , V = this.app.player.tappedBalance
